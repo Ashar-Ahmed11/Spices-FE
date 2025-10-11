@@ -30,7 +30,7 @@ const NoteState = (props) => {
     // setMainLoader(location.pathname=='/'?false:true)
     settheProductLoader(true)
 
-    const url = "https://nukhba-backend.vercel.app/api/products/allproducts"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/allproducts"
     const response = await fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
@@ -163,7 +163,7 @@ const NoteState = (props) => {
     setnavLoader(true)
     setMainLoader(true)
     setMainProductId(null)
-    const url = `https://nukhba-backend.vercel.app/api/products/singleproduct/${productId}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/singleproduct/${productId}`
     const response = await fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
@@ -240,7 +240,7 @@ const NoteState = (props) => {
 
   // Default options are marked with *
   const sendWhatsappMessage = async (name, email, phone, products, address, city, total, smallTotal) => {
-    const url = "https://nukhba-backend.vercel.app/api/sendmessage/"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendmessage/"
     setCheckoutLoader(true)
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -260,9 +260,9 @@ const NoteState = (props) => {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-  // https://nukhba-backend.vercel.app/api/sendemail/
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/
   const sendEmail = async (name, email, products, total, smallTotal) => {
-    const url = "https://nukhba-backend.vercel.app/api/sendemail/"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/"
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -284,7 +284,7 @@ const NoteState = (props) => {
     setEditorLoader(true)
     const url = "https://api.cloudinary.com/v1_1/dextrzp2q/image/upload"
 
-    // https://nukhba-backend.vercel.app/api/sendImg/
+    // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendImg/
 
     const formData = new FormData()
 
@@ -317,13 +317,13 @@ const NoteState = (props) => {
 
   const [loginLoader, setLoginLoader] = useState(false)
 
-  // https://nukhba-backend.vercel.app/api/auth/login
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/auth/login
 
   const [adminView, setAdminView] = useLocalStorage('adminView', false)
   const loginAdmin = async (password) => {
 
     setLoginLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/auth/login"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/auth/login"
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -333,7 +333,7 @@ const NoteState = (props) => {
       },
 
 
-      body: JSON.stringify({ username: 'Suhaib Ahmed', password: password }) // body data type must match "Content-Type" header
+      body: JSON.stringify({ username: 'admin@memonfoodsandspices', password: password }) // body data type must match "Content-Type" header
     });
     const token = await response.json()
 
@@ -349,7 +349,7 @@ const NoteState = (props) => {
   const getHomeData = async () => {
     setImgIsLoaded(false)
     setMainLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/getdata/gethome"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/gethome"
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -374,7 +374,7 @@ const NoteState = (props) => {
   const editor = async (component, value) => {
     setLoginLoader(true)
     setEditorLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/getdata/edithome"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/edithome"
 
     const response = await fetch(url, {
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -422,7 +422,7 @@ const NoteState = (props) => {
     setMainLoader(true)
 
 
-    const url = `https://nukhba-backend.vercel.app/api/getdata/getcategory/${category}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/getcategory/${category}`
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -455,7 +455,7 @@ const NoteState = (props) => {
   // 63f889f5cdc19d1ff959060c data for wallets
   // 63f88ab086e4f159223e0d46 data for belts
   // 63f88b21b44e805ac73472f3 data for handbags
-  // https://nukhba-backend.vercel.app/api/getdata/editcategory/63f88b21b44e805ac73472f3 for editing category
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/editcategory/63f88b21b44e805ac73472f3 for editing category
 
 
 
@@ -463,7 +463,7 @@ const NoteState = (props) => {
   const categoryEditor = async (component, value, category) => {
     setLoginLoader(true)
     setEditorLoader(true)
-    const url = `https://nukhba-backend.vercel.app/api/getdata/editcategory/${category}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/editcategory/${category}`
 
     const response = await fetch(url, {
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -617,7 +617,7 @@ const NoteState = (props) => {
 
   const createProduct = async (name, price, description, category,homePreview,youtubeLink,priceAED) => {
     setEditorLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/products/createproduct"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/createproduct"
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -654,7 +654,7 @@ const NoteState = (props) => {
 
   const editProduct = async (prodid,name, price, description, category,homePreview,youtubeLink,priceAED) => {
     setEditorLoader(true)
-    const url = `https://nukhba-backend.vercel.app/api/products/editProduct/${prodid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/editProduct/${prodid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -688,7 +688,7 @@ const NoteState = (props) => {
   }
   const deleteProduct = async (prodid) => {
     setEditorLoader(true)
-    const url = `https://nukhba-backend.vercel.app/api/products/deleteproduct/${prodid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/deleteproduct/${prodid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "DELETE",
@@ -722,7 +722,7 @@ const NoteState = (props) => {
     setEditorLoader(true)
     const url = "https://api.cloudinary.com/v1_1/dextrzp2q/image/upload"
 
-    // https://nukhba-backend.vercel.app/api/sendImg/
+    // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendImg/
 
     const formData = new FormData()
 
@@ -809,7 +809,7 @@ const NoteState = (props) => {
 
   const createCategory = async (name) => {
     setEditorLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/getdata/createcategory"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/createcategory"
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -837,7 +837,7 @@ const NoteState = (props) => {
 
   const deleteCategory = async (catyid) => {
     setEditorLoader(true)
-    const url = `https://nukhba-backend.vercel.app/api/getdata/deletecategory/${catyid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/deletecategory/${catyid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "DELETE",
@@ -873,13 +873,13 @@ const NoteState = (props) => {
 
   const [checkouter, setcheckouter] = useState(false)
 
-  const [country, setCountry] = useLocalStorage('hello',null)
+  const [country, setCountry] = useLocalStorage('hello',"Pakistan")
   const openRef = useRef(null)
 
   
   const getCategories = async () => {
     setMainLoader(true)
-    const url = "https://nukhba-backend.vercel.app/api/getdata/getcategories"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/getcategories"
     const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin

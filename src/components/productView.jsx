@@ -85,10 +85,16 @@ export default function ProductView() {
   
   useEffect(() => {
     if(products.length>1){
-
+      console.log("hellowrod");
+      
       setProductView(products.find((e)=>{return e._id==productid}))
+      
+      console.log("PRODUCTS",products);
+      
     }
   }, [products])
+  
+  console.log(products.length);
   
   // console.log(products)
   

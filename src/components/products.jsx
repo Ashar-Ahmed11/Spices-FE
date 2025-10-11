@@ -13,11 +13,7 @@ export default function Products({productsTwo}) {
     const {setProducts, theProductLoader, getHomeProducts, homeProducts, setText, setComponent, fetchProduct, products, fetchCart, loader, productLoader, homeData, editor, editComponent, adminView } = context
     // const fetchedProducts=useLoaderData()
     // setProducts(productsTwo)
-    useEffect(() => {
-        if(products.length<1){
-        fetchProduct()
-    }
-    }, [products])
+ 
 
 
 
@@ -56,6 +52,7 @@ export default function Products({productsTwo}) {
     // console.log(products)
     return (
         <div>
+           
             <div className={window.innerWidth > 750 && "m-3"}>
 
                 <p data-aos="fade-up" data-aos-duration="1000" onClick={(e) => { if (adminView) { setText(e.target.innerText); editComponent(); setComponent('firstHeading') } }} className="h1 text-center my-5" style={{ fontFamily: 'Sagrantino', color: color }}>{homeData.firstHeading}</p>

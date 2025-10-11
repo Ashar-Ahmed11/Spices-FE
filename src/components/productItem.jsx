@@ -14,7 +14,8 @@ export default function ProductItem({ data }) {
     const context = useContext(NoteContext)
     const { addProduct, getProduct, setMainLoader, refreshPage,country } = context
     const { name, assets, price, description, _id, permalink, sku, quantity } = data
-
+    console.log(data);
+    
     const [scaler, setScaler] = useState("2.15")
     useEffect(() => {
 

@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 export default function Navbar() {
     const context = useContext(NoteContext)
     const location = useLocation()
-    const {getCategories, openRef, country, setProducts, setnavLoader, categoriesRef, categories, setCategories, setMySpace, pageRef, ref, openCart, fetchCart, mainLoader, adminView, setAdminView, modalIsOpen, setMainLoader } = context
+    const { getCategories, openRef, country, setProducts, setnavLoader, categoriesRef, categories, setCategories, setMySpace, pageRef, ref, openCart, fetchCart, mainLoader, adminView, setAdminView, modalIsOpen, setMainLoader } = context
 
 
 
@@ -31,7 +31,7 @@ export default function Navbar() {
     let xyzCategory = []
     xyzCategory = [...anotherArray, ...array]
 
-    const finalCategory = xyzCategory.filter((e)=>{return !e.firstHeading.includes("*")})
+    const finalCategory = xyzCategory.filter((e) => { return !e.firstHeading.includes("*") })
 
 
 
@@ -94,9 +94,9 @@ export default function Navbar() {
                         </button>
                     </div>
                     <div>
-                        <Link onClick={() => setMySpace(10)} className="navbar-brand" to='/' style={{ color: color,transform:"scale(1.4)" }}>
-                            <img src={logo} alt="Logo" width="40"  className="mx-2 d-inline-block align-text-top" />
-                        
+                        <Link onClick={() => setMySpace(10)} className="navbar-brand" to='/' style={{ color: color, transform: "scale(1.4)" }}>
+                            <img src={logo} alt="Logo" width="40" className="mx-2 d-inline-block align-text-top" />
+
                         </Link>
                     </div>
                     <div>
@@ -168,16 +168,16 @@ export default function Navbar() {
                                     </a>
 
                                 </li>
-                                <li className="nav-item">
-                                        <a onClick={() => openRef.current.click()} style={{ cursor: 'pointer' }} className="nav-link">
+                                {/* <li className="nav-item">
+                                    <a onClick={() => openRef.current.click()} style={{ cursor: 'pointer' }} className="nav-link">
 
-                                            <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" >
+                                        <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" >
 
-                                            </img>
+                                        </img>
 
-                                        </a>
+                                    </a>
 
-                                    </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -206,8 +206,8 @@ export default function Navbar() {
                             </ul>
                         </div>
                         <div>
-                            <Link className="navbar-brand" to='/' style={{ color: color,transform:"scale(1.4)" }}>
-                                <img src={logo} alt="Logo" width="40"  className="mx-2 d-inline-block align-text-top" />
+                            <Link className="navbar-brand" to='/' style={{ color: color, transform: "scale(1.4)" }}>
+                                <img src={logo} alt="Logo" width="40" className="mx-2 d-inline-block align-text-top" />
                                 {/* NUKHBA */}
                             </Link>
                         </div>
@@ -216,16 +216,16 @@ export default function Navbar() {
                             <span className="navbar-text">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <a onClick={() => openRef.current.click()} style={{ cursor: 'pointer' }} className="nav-link">
-                                            
+
                                             <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" >
 
                                             </img>
 
                                         </a>
 
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <a style={{ cursor: 'pointer' }} onClick={() => { openCart(); fetchCart() }} className="nav-link">
                                             <i style={{ fontSize: "25px", color: color }} className="fa fa-shopping-cart" aria-hidden={true}></i>

@@ -180,7 +180,8 @@ export default function WalletItem({ data }) {
                             <div ref={sliderRef} className="keen-slider">
                                 {assets.map((e) => {
                                     return <div className="keen-slider__slide">
-                                        <div key={e.url} onLoad={(e) => { setImgLoader(true); setHeight('max-content'); e.target.alt = 'hello'; setChecker(e.target.alt); e.target.loading = 'lazy'; e.target.onLoad = setImgLoader(true) }} style={{ transform: `scale(${scaler})`, marginBottom: '100%' }} className={`card-img-top position-relative w-100 h-100`}>
+                                        <div key={e.url} onLoad={(e) => { setImgLoader(true); console.log(imgLoader);
+                                        ;setHeight('max-content'); e.target.alt = 'hello'; setChecker(e.target.alt); e.target.loading = 'lazy'; e.target.onLoad = setImgLoader(true) }} style={{ transform: `scale(${scaler})`, marginBottom: '100%' }} className={`card-img-top position-relative w-100 h-100`}>
                                             <Link to={`/product/${_id}`}>
                                                 <Image cloudName="dextrzp2q" className="card-img-top position-absolute w-100 h-100" style={{ top: 0 }} key={e.url} publicId={e.url} type="fetch">
 
