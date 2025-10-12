@@ -20,9 +20,9 @@ const CategoriesPreview = () => {
         <div className="row">
           {finalCategory.map((e,i)=>{
             return <Link to={`categories/${e._id}`} className={`col col-${window.innerWidth<992?i==0?'12':'6':i>3?'4':'6'} p-1`}>
-            <div id="carouselExampleCaptions" class="carousel slide">
+            <div  style={{background:"none"}} id="carouselExampleCaptions" class="carousel slide">
 
-              <div  class="carousel-inner rounded-4">
+              <div class="carousel-inner rounded-4">
                 <div class="carousel-item active">
                   <div style={{ zIndex: '20' }} className='shade'></div>
 
