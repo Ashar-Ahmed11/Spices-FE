@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.946be027.css",
-    "main.js": "/static/js/main.fc850524.js",
+    "main.js": "/static/js/main.d9274442.js",
     "static/media/bodyCarousal.png": "/static/media/bodyCarousal.98284f222b6909882548.png",
     "static/media/eastman-roman-bd.ttf": "/static/media/eastman-roman-bd.deaf0c0d34cecb70951d.ttf",
     "static/media/nukhbaLogo1.png": "/static/media/nukhbaLogo1.ae30d010a9995c47203f.png",
@@ -9,10 +9,10 @@
     "static/media/Twentieth Century.ttf": "/static/media/Twentieth Century.af55cfad9df1e318eabb.ttf",
     "index.html": "/index.html",
     "main.946be027.css.map": "/static/css/main.946be027.css.map",
-    "main.fc850524.js.map": "/static/js/main.fc850524.js.map"
+    "main.d9274442.js.map": "/static/js/main.d9274442.js.map"
   },
   "entrypoints": [
     "static/css/main.946be027.css",
-    "static/js/main.fc850524.js"
+    "static/js/main.d9274442.js"
   ]
 }

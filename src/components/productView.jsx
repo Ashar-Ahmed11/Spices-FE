@@ -13,6 +13,7 @@ import MetaDecorator from './metaDecorator'
 import BarLoader from 'react-spinners/BarLoader'
 import ThumbnailPlugin from './thumbnailPlugin'
 import { fetchProduct } from './products'
+import Varients from './varients'
 export default function ProductView() {
 
 
@@ -48,16 +49,16 @@ export default function ProductView() {
 
 
   const { productid } = useParams()
-  
+
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       initial: 0,
 
     },
     [ResizePlugin]
-    )
+  )
   const [thumbnailRef] = useKeenSlider(
-    
+
     {
       initial: 0,
       slides: {
@@ -67,38 +68,38 @@ export default function ProductView() {
       },
     },
     [ThumbnailPlugin(instanceRef), ResizePlugin, MutationPlugin]
-    )
-    
+  )
 
-    
-    const context = useContext(NoteContext)
 
-    const {fetchProduct,setImgIsLoaded, products, setProductView, productView, addProduct, productLoader, getProduct, setMainLoader, setnavLoader } = context
+
+  const context = useContext(NoteContext)
+
+  const { fetchProduct, setImgIsLoaded, products, setProductView, productView, addProduct, productLoader, getProduct, setMainLoader, setnavLoader } = context
   // console.log(productView)
   // const { name, price, image, id, assets, description, youtubeLink } = productView
-  
+
   useEffect(() => {
-    if(products.length<1){
+    if (products.length < 1) {
       fetchProduct()
     }
   }, [products])
-  
+
   useEffect(() => {
-    if(products.length>1){
+    if (products.length > 1) {
       console.log("hellowrod");
-      
-      setProductView(products.find((e)=>{return e._id==productid}))
-      
-      console.log("PRODUCTS",products);
-      
+
+      setProductView(products.find((e) => { return e._id == productid }))
+
+      console.log("PRODUCTS", products);
+
     }
   }, [products])
-  
+
   console.log(products.length);
-  
+
   // console.log(products)
-  
-  
+
+
   const [quantity, setQuantity] = useState(1)
   if (quantity < 1) {
     setQuantity(1)
@@ -129,11 +130,34 @@ export default function ProductView() {
   // console.log(productView)
   const [imgLoaded, setimgLoaded] = useState(false)
   // console.log(youtubeLink)
+
+  console.log(productView);
+
+
+  const [selectedSize, setSelectedSize] = useState();
+
+  useEffect(() => {
+
+    if (productView?.variants) {
+      setSelectedSize(productView.variants[0])
+
+    }
+
+  }, [productView])
+
+  console.log(selectedSize);
+  const priceConverter = (_amount) => {
+    let convertedAmount = _amount.toLocaleString("en-US", {
+      style: "currency", currency: "PKR", minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    })
+    return convertedAmount
+  }
   return (
     <>
 
       {productView && <div key={productView.image} >
-      <MetaDecorator title={productView.name} description={productView.description.replaceAll('<p>', '').replaceAll('</p>', '')} imageUrl={productView.assets[0].url} imageAlt={productView.name}/>
+        <MetaDecorator title={productView.name} description={productView.description.replaceAll('<p>', '').replaceAll('</p>', '')} imageUrl={productView.assets[0].url} imageAlt={productView.name} />
 
         <div className='d-flex justify-content-center mb-5' >
           {productLoader && <div style={{ position: "fixed", bottom: "-30px", right: "-25px", zIndex: "99999" }}><Spinner /></div>}
@@ -154,8 +178,8 @@ export default function ProductView() {
                             </div>
                             {/* <img onLoad={() => setimgLoaded(true)} key={element.url} style={{ width: "100%", transform: "scale(1.2)" }} src={element.url} alt="" /> */}
 
-                            <div className='position-relative' key={element.url} onLoad={() => setimgLoaded(true)} style={{ width: "100%",height:'100%',backgroundColor:"#ffffff",paddingBottom:"100%" }}>
-                              <Image style={{top:'0'}} cloudName="dextrzp2q" className="card-img-top position-absolute w-100 h-100" key={element.url} publicId={element.url} type="fetch">
+                            <div className='position-relative' key={element.url} onLoad={() => setimgLoaded(true)} style={{ width: "100%", height: '100%', backgroundColor: "#ffffff", paddingBottom: "100%" }}>
+                              <Image style={{ top: '0' }} cloudName="dextrzp2q" className="card-img-top position-absolute w-100 h-100" key={element.url} publicId={element.url} type="fetch">
 
                                 <Transformation fetchFormat="webp" />
                                 <Transformation crop="pad" height="1000" width="1000" background="white" />
@@ -227,8 +251,19 @@ export default function ProductView() {
                 <div className="card-body">
                   <p style={{ color: color, fontFamily: 'Sagrantino', fontSize: '30px' }} className="card-title p-3">{productView.name}</p>
 
-                  <p style={{ color: color, fontSize: '23px' }} className='p-3'>{productView.localePrice}</p>
+                  <p style={{ color: color, fontSize: '23px' }} className='p-3'>{
+                    productView?.variants.length > 0 ?
+                      priceConverter(selectedSize?.price || 0)
+                      : productView.localePrice
 
+                  }</p>
+
+                  {productView?.variants.length > 0 && <div className=" p-3  px-3 mx-2">
+
+                    <div className='my-2'><p style={{ color: color }}>Varients</p></div>
+                    <Varients sizes={productView?.variants} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+
+                  </div>}
                   <div className="d-flex p-3 justify-content-between px-3 mx-2">
 
                     <div className='my-2'><p style={{ color: color }}>Quantity</p></div>
@@ -242,7 +277,7 @@ export default function ProductView() {
                   </div>
 
                   <div className="p-3 d-flex">
-                    <button style={{ backgroundColor: "#f4b92d", color: "#ffffff", width: "100%", borderRadius: "10px" }} onClick={() => addProduct(productView, quantity)} className="btn">Add to cart</button>
+                    <button style={{ backgroundColor: "#f4b92d", color: "#ffffff", width: "100%", borderRadius: "10px" }} onClick={() => addProduct(productView, quantity,selectedSize)} className="btn">Add to cart</button>
                   </div>
                   <div className='p-3'>
                     <p style={{ fontSize: "16.5px", color: "#B18314", textDecoration: "underline" }}>Description</p>

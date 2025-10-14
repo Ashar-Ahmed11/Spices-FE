@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import JoditEditor, { Jodit } from 'jodit-react';
 import { useParams } from 'react-router-dom'
 import Spinner from '../spinner'
+import VariantsManager from './variantManager'
 // import { Editor } from "react-draft-wysiwyg";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -19,9 +20,13 @@ export default function CreateProduct() {
     const { prodid } = params
     const openModal = useRef(null)
     const history = useNavigate(null)
+    const [variants, setVariants] = useState([]);
+
     const context = useContext(NoteContext)
     const { fetchProduct, products, setEditorLoader, deleteProduct, editProduct, setProductView, getProduct, productView, categories, asset, createProduct, setModalIsOpen, modalRef, setMyAsset, setImgPreview, imgPreview, setImgIsLoaded, setMainLoader, setcheckouter } = context
 
+    console.log('THE PRODUCT',productView);
+    
     useEffect(() => {
         setImgPreview([])
         fetchProduct()
@@ -35,10 +40,10 @@ export default function CreateProduct() {
     console.log(components.category)
     const dispatchProduct = (e) => {
         e.preventDefault()
-        prodid ? editProduct(prodid, components.namer, components.price, components.description, components.category, components.homePreview, components.youtubeLink, components.priceAED)
-            : createProduct(components.namer, components.price, components.description, components.category, components.homePreview, components.youtubeLink, components.priceAED)
+        prodid ? editProduct(prodid, components.namer, components.price, components.description, components.category, components.homePreview, components.youtubeLink, components.priceAED,variants)
+            : createProduct(components.namer, components.price, components.description, components.category, components.homePreview, components.youtubeLink, components.priceAED,variants)
     }
-    const color = "#F4B92D"
+    const color = "#000000"
     const token = localStorage.getItem('auth-token')
     if (!token) {
         history('/admin')
@@ -80,8 +85,9 @@ export default function CreateProduct() {
     useEffect(() => {
 
         if (productView) {
-            const { name, price, description, youtubeLink, homePreview, category, priceAED, _id } = productView
+            const { name, price, description, youtubeLink, homePreview, category, priceAED, _id ,variants} = productView
             setComponents({ namer: name, price: price, description: description, youtubeLink: youtubeLink, homePreview: homePreview, category: category, priceAED: priceAED, _id: _id })
+           setVariants(variants)
             setImgPreview(productView.assets)
         }
         return () => {
@@ -89,6 +95,8 @@ export default function CreateProduct() {
 
         }
     }, [productView])
+
+
 
     // console.log(components.category)
 
@@ -103,7 +111,6 @@ export default function CreateProduct() {
     }
     console.log(components, imgPreview)
 
-    
 
 
 
@@ -117,16 +124,16 @@ export default function CreateProduct() {
                 <div className="container">
                     <form>
 
-                        <input value={components.namer} onChange={(e) => setComponents({ ...components, namer: e.target.value })} style={{ color: color, backgroundColor: '#000000', borderColor: color }} type="text" placeholder='Product Name' className="form-control my-2" />
-                        <input value={components.price} onChange={(e) => setComponents({ ...components, price: e.target.value })} style={{ color: color, backgroundColor: '#000000', borderColor: color }} type="text" placeholder='Product Price PKR' className="form-control my-2" />
-                        <input value={components.priceAED} onChange={(e) => setComponents({ ...components, priceAED: e.target.value })} style={{ color: color, backgroundColor: '#000000', borderColor: color }} type="text" placeholder='Product Price AED' className="form-control my-2" />
+                        <input value={components.namer} onChange={(e) => setComponents({ ...components, namer: e.target.value })} style={{ color: color, backgroundColor: 'white',}} type="text" placeholder='Product Name' className="form-control my-2" />
+                        <input value={components.price} onChange={(e) => setComponents({ ...components, price: e.target.value })} style={{ color: color, backgroundColor: 'white',}} type="text" placeholder='Product Price PKR' className="form-control my-2" />
+                        {/* <input value={components.priceAED} onChange={(e) => setComponents({ ...components, priceAED: e.target.value })} style={{ color: color, backgroundColor: 'white',}} type="text" placeholder='Product Price AED' className="form-control my-2" /> */}
 
-
+                        <VariantsManager variants={variants} setVariants={setVariants} />
                         <div>
-                            <button onClick={(e) => { e.preventDefault(); openModal.current.click(); setEditImageUrl(null) }} style={{ borderColor: color, color: color }} className="btn">Upload Image</button>
+                            <button onClick={(e) => { e.preventDefault(); openModal.current.click(); setEditImageUrl(null) }} style={{ color: color }} className="btn">Upload Image</button>
                             <>
-                                {/* <button onClick={(e) => { e.preventDefault(); openModal.current.click() }} style={{ borderColor: color, color: color }} className="btn mx-2">Reupload Image</button> */}
-                                <button onClick={(e) => { e.preventDefault(); setImgPreview([]) }} style={{ borderColor: color, color: color }} className="btn mx-2">Remove Images</button>
+                                {/* <button onClick={(e) => { e.preventDefault(); openModal.current.click() }} style={{ color: color }} className="btn mx-2">Reupload Image</button> */}
+                                <button onClick={(e) => { e.preventDefault(); setImgPreview([]) }} style={{ color: color }} className="btn mx-2">Remove Images</button>
                             </>
 
                             {imgPreview && <div className="my-2">
@@ -188,7 +195,7 @@ export default function CreateProduct() {
 
                             <label class="form-check-label" style={{ color: "#F4B92D" }} for="flexSwitchCheckDefault">Display On Home Page</label>
                         </div>
-                        <input value={components.youtubeLink} onChange={(e) => setComponents({ ...components, youtubeLink: e.target.value })} style={{ color: color, backgroundColor: '#000000', borderColor: color }} type="text" placeholder='Youtube Video URL' className="form-control my-2" />
+                        <input value={components.youtubeLink} onChange={(e) => setComponents({ ...components, youtubeLink: e.target.value })} style={{ color: color, backgroundColor: 'white',}} type="text" placeholder='Youtube Video URL' className="form-control my-2" />
 
 
                         <div className='my-2'>
@@ -199,7 +206,7 @@ export default function CreateProduct() {
 
                         <div className={`d-flex ${prodid ? 'justify-content-between' : 'justify-content-end'}     align-items-center my-3`}>
                             {prodid && <button onClick={(e) => { e.preventDefault(), deleteModalRef.current.click() }} className="btn btn-danger">Delete</button>}
-                            <button onClick={(e) => dispatchProduct(e)} style={{ borderColor: color, color: color }} className="btn my-2">{prodid ? 'Edit Product' : 'Create Product'}</button>
+                            <button onClick={(e) => dispatchProduct(e)} style={{ color: color }} className="btn my-2">{prodid ? 'Edit Product' : 'Create Product'}</button>
                         </div>
                     </form>
 
