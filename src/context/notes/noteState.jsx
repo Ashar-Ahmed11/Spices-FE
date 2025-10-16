@@ -30,7 +30,7 @@ const NoteState = (props) => {
     // setMainLoader(location.pathname=='/'?false:true)
     settheProductLoader(true)
 
-    const url = "http://localhost:8000/api/products/allproducts"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/allproducts"
     const response = await fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
@@ -179,7 +179,7 @@ const NoteState = (props) => {
     setnavLoader(true)
     setMainLoader(true)
     setMainProductId(null)
-    const url = `http://localhost:8000/api/products/singleproduct/${productId}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/singleproduct/${productId}`
     const response = await fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
@@ -256,7 +256,7 @@ const NoteState = (props) => {
 
   // Default options are marked with *
   const sendWhatsappMessage = async (name, email, phone, products, address, city, total, smallTotal) => {
-    const url = "http://localhost:8000/api/sendmessage/"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendmessage/"
     setCheckoutLoader(true)
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -276,9 +276,9 @@ const NoteState = (props) => {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-  // http://localhost:8000/api/sendemail/
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/
   const sendEmail = async (name, email, products, total, smallTotal) => {
-    const url = "http://localhost:8000/api/sendemail/"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/"
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -300,7 +300,7 @@ const NoteState = (props) => {
     setEditorLoader(true)
     const url = "https://api.cloudinary.com/v1_1/dextrzp2q/image/upload"
 
-    // http://localhost:8000/api/sendImg/
+    // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendImg/
 
     const formData = new FormData()
 
@@ -333,13 +333,13 @@ const NoteState = (props) => {
 
   const [loginLoader, setLoginLoader] = useState(false)
 
-  // http://localhost:8000/api/auth/login
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/auth/login
 
   const [adminView, setAdminView] = useLocalStorage('adminView', false)
   const loginAdmin = async (password) => {
 
     setLoginLoader(true)
-    const url = "http://localhost:8000/api/auth/login"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/auth/login"
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -365,7 +365,7 @@ const NoteState = (props) => {
   const getHomeData = async () => {
     setImgIsLoaded(false)
     setMainLoader(true)
-    const url = "http://localhost:8000/api/getdata/gethome"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/gethome"
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -390,7 +390,7 @@ const NoteState = (props) => {
   const editor = async (component, value) => {
     setLoginLoader(true)
     setEditorLoader(true)
-    const url = "http://localhost:8000/api/getdata/edithome"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/edithome"
 
     const response = await fetch(url, {
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -438,7 +438,7 @@ const NoteState = (props) => {
     setMainLoader(true)
 
 
-    const url = `http://localhost:8000/api/getdata/getcategory/${category}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/getcategory/${category}`
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -471,7 +471,7 @@ const NoteState = (props) => {
   // 63f889f5cdc19d1ff959060c data for wallets
   // 63f88ab086e4f159223e0d46 data for belts
   // 63f88b21b44e805ac73472f3 data for handbags
-  // http://localhost:8000/api/getdata/editcategory/63f88b21b44e805ac73472f3 for editing category
+  // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/editcategory/63f88b21b44e805ac73472f3 for editing category
 
 
 
@@ -479,7 +479,7 @@ const NoteState = (props) => {
   const categoryEditor = async (component, value, category) => {
     setLoginLoader(true)
     setEditorLoader(true)
-    const url = `http://localhost:8000/api/getdata/editcategory/${category}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/editcategory/${category}`
 
     const response = await fetch(url, {
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -633,7 +633,7 @@ const NoteState = (props) => {
 
   const createProduct = async (name, price, description, category,homePreview,youtubeLink,priceAED,variants) => {
     setEditorLoader(true)
-    const url = "http://localhost:8000/api/products/createproduct"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/createproduct"
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -674,7 +674,7 @@ const NoteState = (props) => {
 
   const editProduct = async (prodid,name, price, description, category,homePreview,youtubeLink,priceAED,variants) => {
     setEditorLoader(true)
-    const url = `http://localhost:8000/api/products/editProduct/${prodid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/editProduct/${prodid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -708,7 +708,7 @@ const NoteState = (props) => {
   }
   const deleteProduct = async (prodid) => {
     setEditorLoader(true)
-    const url = `http://localhost:8000/api/products/deleteproduct/${prodid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/deleteproduct/${prodid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "DELETE",
@@ -742,7 +742,7 @@ const NoteState = (props) => {
     setEditorLoader(true)
     const url = "https://api.cloudinary.com/v1_1/dextrzp2q/image/upload"
 
-    // http://localhost:8000/api/sendImg/
+    // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendImg/
 
     const formData = new FormData()
 
@@ -829,7 +829,7 @@ const NoteState = (props) => {
 
   const createCategory = async (name) => {
     setEditorLoader(true)
-    const url = "http://localhost:8000/api/getdata/createcategory"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/createcategory"
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST",
@@ -857,7 +857,7 @@ const NoteState = (props) => {
 
   const deleteCategory = async (catyid) => {
     setEditorLoader(true)
-    const url = `http://localhost:8000/api/getdata/deletecategory/${catyid}`
+    const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/deletecategory/${catyid}`
     // Default options are marked with *
     const response = await fetch(url, {
       method: "DELETE",
@@ -899,7 +899,7 @@ const NoteState = (props) => {
   
   const getCategories = async () => {
     setMainLoader(true)
-    const url = "http://localhost:8000/api/getdata/getcategories"
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/getcategories"
     const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -918,7 +918,7 @@ const NoteState = (props) => {
     setMainLoader(false)
 }
 
-  // console.clear()
+  console.clear()
   return (
     <NoteContext.Provider value={{setEditorLoader,history,getCategories,productsFetched,setCart,openRef,country,setCountry,setProducts,setHomeData,setCategoryData, deleteProduct,editProduct,setProductView, showAnimation, checkouter, setcheckouter, totalCal, settotalCal, getProductLoader, navLoader, setnavLoader, theProductLoader, anotherImageLoader, setAnotherImageLoader, categoriesRef, deleteCategory, createCategory, categories, setCategories, imgLoad, setImgLoad, refreshPage, mainProductId, setSliderSize, sliderSize, testimonialSliderRef, setImgPreview, modalRef, setModalIsOpen, modalIsOpen, imgPreview, loaded, setLoaded, imgIsLoaded, setImgIsLoaded, categoryImage,  createProduct, generateDownload, setMySpace, pageRef, anotherLoader, setAnotherLoader, getHomeProducts, homeProducts, currentPage, firstItemIndex, lastItemIndex, setCurrentPage, catyImageEditor, setCatyImageEditor, setCategorial, categorial, setCatyEditor, catyEditor, categoryEditor, getCategoryData, categoryData, setLoginLoader, editorLoader, footerImage, carousalEditor, setCarousalEditor, setFooterImage, setImageEditor, imageEditor, setComponent, Component, setText, text, editComponent, myRef, setAdminView, adminView, editor, homeData, getHomeData, loginLoader, loginAdmin, cloudinary, checkoutLoader, sendWhatsappMessage, sliderRefTwo, mainLoader, setMainLoader, productLoader, loader, productView, getProduct, removeProduct, updateProduct, ref, openCart, cart, addProduct, fetchProduct, products, fetchCart }}>
       {props.children}

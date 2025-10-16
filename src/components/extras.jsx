@@ -21,7 +21,7 @@ export default function Extras() {
                         <div  data-aos="fade-right"  data-aos-duration="1000" style={{height:'max-content'}} className="col-md-6 col-12">
                             {/* <div className="card withImg" style={{ borderRadius: '0px', backgroundColor: '#ffffff' }}> */}
 
-                                <img onClick={(e)=>{if(adminView){setText(e.target.innerText);editComponent();setComponent('bodyImg');setImageEditor(true)}}} style={{ borderRadius: '0px', height: '90%',width:'100%' }} className='card-img' src={homeData.bodyImg} alt="" />
+                                <img onClick={(e)=>{if(adminView){setText(e.target.innerText);editComponent();setComponent('bodyImg');setImageEditor(true)}}} style={{ borderRadius: '0px', height: '90%',width:'100%' }} className='card-img rounded-4' src={homeData.bodyImg} alt="" />
 
                             {/* </div> */}
                         </div>

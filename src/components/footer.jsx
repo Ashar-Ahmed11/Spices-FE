@@ -19,9 +19,9 @@ export default function Footer() {
                     <div class="row">
                         <div class="col-md-8 col-sm-6 col-xs-12">
                             <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
-                                <a href="#">Nukhba</a>
+                                <a href="#"> Memon Foods & Spices</a>
                             </p>
-                            <p class="copyright-text">Site developed by: <a href='/Metatech.pdf' target="_blank" download> Meta Tech</a>
+                            <p class="copyright-text">Site developed by: <a href='https://metatech-official.com' target="_blank">Metatech Official</a>
                                 
                             </p>
                         </div>

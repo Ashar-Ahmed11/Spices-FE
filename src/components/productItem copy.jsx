@@ -165,9 +165,9 @@ export default function WalletItem({ data }) {
                 <div style={{ overflow: 'hidden' }}>
                     {/* <div style={{ overflow: 'hidden', height: 'max-content', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: "1s ease", height: checker || imgLoader ? 'max-content' : '300px' }}> */}
                     <div className='position-relative'>
-                        {!imgLoader && <div className='w-100 d-flex justify-content-center align-items-center h-100' style={{ position: 'absolute', zIndex: 99999999 }}>
+                        {/* {!imgLoader && <div className='w-100 d-flex justify-content-center align-items-center h-100' style={{ position: 'absolute', zIndex: 99999999 }}>
                             <MoonLoader color="#F4B92D" />
-                        </div>}
+                        </div>} */}
 
 
                         {/* <img type="" id='thatImage' key={e.url} loading="lazy" onLoad={(e) => { setImgLoader(true); setHeight('max-content'); e.target.alt = 'hello'; setChecker(e.target.alt) }} src={`https://res.cloudinary.com/dextrzp2q/e/fetch/f_avif/${transformedUrl}`} style={{ transform: `scale(${scaler})` }}  className={`card-img-top `} alt="..." /> */}

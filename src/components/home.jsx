@@ -40,8 +40,8 @@ export default function Home() {
       <Carousal />
       <Trust />
       
+      <SpicesVideo title={"A Legacy of Pure Spices"} video={"https://res.cloudinary.com/dextrzp2q/video/upload/c_scale/f_auto/q_60/v1760616482/TOP_QUALITY_SPICES_IN_PAKISTAN_wudm18.mp4"}/>
       <CategoriesPreview />
-      <SpicesVideo title={"A Legacy of Pure Spices"} video={"https://res.cloudinary.com/dextrzp2q/video/upload/c_scale/f_auto/q_60/v1760299043/video1_ssukfi.mp4"}/>
       <Products />
       <CategoryWiseProducts/>
       <SpicesVideo title={"Pakistan’s Most Trusted Spice Brand"} video={"https://res.cloudinary.com/dextrzp2q/video/upload/c_scale/f_auto/q_60/v1760299638/video3_bfv3on.mp4"}/>
