@@ -8,7 +8,7 @@ export default function Footer() {
                     <div class="row px-2">
                         <div class="col-sm-12 col-md-6">
                             <h6>About</h6>
-                            <p class="text-justify">We pride ourselves on serving our customers with great taste in leather wearables and accessories, and we are extremely proud of our new Store at the center of Zainab Market, Karachi. We are a brand that not only represents this – but is also about pushing the boundaries of what is possible in the world of fashion. Nukhba is an innovative Premium Leather & Fashion Brand and we believe strongly in our vision which is to provide the Luxury our customers truly deserve.</p>
+                            <p class="text-justify">We're proud to offer our customers the best taste and quality through our wide range of Memon Foods products. Each pack is fresh and full of flavor. We keep growing as a brand that stands for purity and excellence and pushes the limits of what's possible in the worlds of food and good living. Our headquarters are in the middle of Karachi. Memon Foods is a brand name that is based on trust, new ideas, and a goal to give our customers the high quality and real food that they deserve.</p>
                         </div>
 
                        

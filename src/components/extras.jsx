@@ -49,8 +49,8 @@ export default function Extras() {
                     <div className="keen-slider__slide number-slide">
                         <div style={{backgroundColor:'#ffffff',color:color}} className="card h-100 border-0 shadow-0">
                             <div className="card-body ">
-                                <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>I love this leather brand! Their products are high-quality and stylish. They stand up to wear and tear and keep looking great. I've been using them for months and am always impressed with the results!<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
-                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Shahid Khan</p>
+                                <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>I love Memon Foods so much! Their goods are clean, new, and full of flavor. The quality really stands out—every kind of spice, dried fruit, and salt stays fresh and tastes great even after being used for months. I use their products often and am always impressed by how consistently and well they do their job!<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
+                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Kamal Anwar</p>
 
                             </div>
                         </div>
@@ -59,16 +59,16 @@ export default function Extras() {
                         <div style={{backgroundColor:'#ffffff',color:color}} className="card h-100 border-0 shadow-0">
                             <div className="card-body ">
                                 <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>
-                                This leather brand is top-notch! The craftsmanship is amazing and the quality is unbeatable. I'm always confident that I'm getting the best product when I buy from them.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
-                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Abdul Samad</p>
+                                The Memon Foods company is truly outstanding! Their products are the best in terms of quality and freshness. When I buy from Memon Foods, I know I'm always getting the best taste and value because each pack is carefully chosen and meets high standards.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
+                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Asif Naem</p>
                             </div>
                         </div>
                     </div>
                     <div className="keen-slider__slide number-slide">
                         <div style={{backgroundColor:'#ffffff',color:color}} className="card h-100 border-0 shadow-0">
                             <div className="card-body ">
-                                <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>This leather brand has been a favorite of mine for a long time. Their products are durable, fashionable, and always up-to-date with the latest trends. I'd recommend them to anyone looking for great leather pieces.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
-                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Mirza Sameer</p>
+                                <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>For a long time, Memon Foods has been my favourite brand. Their goods are always new, pure, and full of flavour from the ingredients. Everything they sell is of high quality and tastes just like it should, from spices to dry fruits and salt. I would strongly suggest them to anyone seeking reliable, tasty, and healthy foods.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
+                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Shamroz Ali</p>
                             </div>
                         </div>
                     </div>
@@ -76,8 +76,8 @@ export default function Extras() {
                         <div style={{backgroundColor:'#ffffff',color:color}} className="card h-100 border-0 shadow-0">
                             <div className="card-body ">
                                 <p className='text-center'><i style={{fontSize:"25px"}} class="fa fa-quote-left px-2" aria-hidden="true"></i>
-                                This leather brand is top-notch! The craftsmanship is amazing and the quality is unbeatable. I'm always confident that I'm getting the best product when I buy from them.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
-                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Abdul Samad</p>
+                                Remember Foods is really great! Their products can't be beat when it comes to taste, purity, and freshness. When I buy something from Memon Foods, I know I'm getting the best and most authentic flavour because each item is carefully made and of the highest quality.<i style={{fontSize:"25px"}} class="fa fa-quote-right px-2" aria-hidden="true"></i></p>
+                                                     <p style={{fontWeight:"bolder",fontSize:"25px"}} className="text-center">Abdul Asad</p>
                             </div>
                         </div>
                     </div>
