@@ -168,16 +168,17 @@ export default function Navbar() {
                                     </a>
 
                                 </li>
-                                {/* <li className="nav-item">
+                                <li className="nav-item mx-2">
                                     <a onClick={() => openRef.current.click()} style={{ cursor: 'pointer' }} className="nav-link">
 
-                                        <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" >
+                                        {/* <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" > */}
+                                        {/* </img> */}
+                                        <i style={{ fontSize: "25px", color: '#ffffff' }} class="fa fa-map-marker" aria-hidden="true"></i>
 
-                                        </img>
 
                                     </a>
 
-                                </li> */}
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -216,16 +217,15 @@ export default function Navbar() {
                             <span className="navbar-text">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                    {/* <li className="nav-item">
+                                    <li className="nav-item">
                                         <a onClick={() => openRef.current.click()} style={{ cursor: 'pointer' }} className="nav-link">
 
-                                            <img src={country == "Pakistan" ? "https://www.junaidjamshed.com/static/version1698317217/frontend/Rltsquare/junaidjamshed/en_US/Magento_Theme/images/pak-flag.png" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"} id="myBtn" alt="image-icon" width="30" >
+                                            <i  style={{ fontSize: "25px", color: color }}  class="fa fa-map-marker" aria-hidden="true"></i>
 
-                                            </img>
 
                                         </a>
 
-                                    </li> */}
+                                    </li>
                                     <li className="nav-item">
                                         <a style={{ cursor: 'pointer' }} onClick={() => { openCart(); fetchCart() }} className="nav-link">
                                             <i style={{ fontSize: "25px", color: color }} className="fa fa-shopping-cart" aria-hidden={true}></i>

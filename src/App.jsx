@@ -34,6 +34,8 @@ import { useContext } from 'react';
 import NoteContext from './context/notes/noteContext';
 import MetaDecorator from './components/metaDecorator';
 import { Link } from 'react-router-dom';
+import CityChecker from './components/cityChecker';
+import BasicInfo from './components/admin/basicInfo';
 export default function App() {
     const context = useContext(NoteContext)
     const { setCart, products, setProducts, country, productsFetched } = context
@@ -99,7 +101,7 @@ export default function App() {
             }
             setProducts([...newProducts])
 
-            setCart([])
+            // setCart([])
 
             console.log('helloweo')
             // console.log("FORMATTED PRODUCTS", newProducts);
@@ -126,7 +128,8 @@ export default function App() {
                 imageAlt="Nukhba - Handcrafted Leather Products in Pakistan | Wallets, Belts, Bags"
             /> */}
             <div style={{ backgroundColor: "#ffffff" }}>
-                <RegionChecker />
+                {/* <RegionChecker /> */}
+                <CityChecker/>
                 <ScrollToTop />
                 <EditLoader />
                 {/* https://web.whatsapp.com/send?phone=923083116347&text=Welcome%20to%20the%20store */}
@@ -158,6 +161,7 @@ export default function App() {
                         <Route path="/createproduct/:prodid" element={<CreateProduct />} />
                         <Route path="/adminproducts" element={<AdminProducts />} />
                         <Route path="/createcategory" element={<CreateCategory />} />
+                        <Route path="/basicinfo" element={<BasicInfo />} />
 
                         <Route path="/admin" element={<Admin />} />
                     </Routes>

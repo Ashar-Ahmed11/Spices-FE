@@ -18,7 +18,7 @@ const NoteState = (props) => {
   // const [cart, setCart] = useState({ line_items: [], subtotal: { formatted_with_code: "Rs0.00", raw: "" } })
   const [cart, setCart] = useLocalStorage('cart2', [])
   const [mySpace, setMySpace] = useState(15)
- const [productsFetched, setproductsFetched] = useState(false)
+  const [productsFetched, setproductsFetched] = useState(false)
   const location = useLocation()
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -64,27 +64,27 @@ const NoteState = (props) => {
   // const response = await commerce.cart.empty()
 
   const priceConverter = (_amount) => {
-        let convertedAmount = _amount.toLocaleString("en-US", {
-            style: "currency", currency: "PKR", minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-        })
-        return convertedAmount
-    }
-  const addProduct = async (productId, quantity,selectedSize) => {
+    let convertedAmount = _amount.toLocaleString("en-US", {
+      style: "currency", currency: "PKR", minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    })
+    return convertedAmount
+  }
+  const addProduct = async (productId, quantity, selectedSize) => {
     // const product = {
     //   name
     // }
-      const itemId = selectedSize ? `${productId._id}${selectedSize._id}` : productId._id;
+    const itemId = selectedSize ? `${productId._id}${selectedSize._id}` : productId._id;
 
     console.log(selectedSize);
-    
+
     console.log(cart);
-    
+
     const specificProduct = cart.find((e) => { return e.id == itemId })
     // console.log("SPECIFIC PROD",productId._id+selectedSize._id);
-    
+
     console.log(specificProduct);
-    
+
     if (specificProduct) {
       let editValue
 
@@ -106,7 +106,7 @@ const NoteState = (props) => {
 
     }
     else {
-      setCart([...cart, { name: productId.name, price: selectedSize?selectedSize.price:productId.price, image: productId.assets[0].url, id: selectedSize?productId._id+selectedSize._id:productId._id, quantity: quantity, animation: false, localePrice: selectedSize?priceConverter(selectedSize.price):productId.localePrice,variant:selectedSize }])
+      setCart([...cart, { name: productId.name, price: selectedSize ? selectedSize.price : productId.price, image: productId.assets[0].url, id: selectedSize ? productId._id + selectedSize._id : productId._id, quantity: quantity, animation: false, localePrice: selectedSize ? priceConverter(selectedSize.price) : productId.localePrice, variant: selectedSize }])
       // setProductLoader(true)
       // const response = await commerce.cart.add(productId, quantity)
       // // console.log(response)
@@ -147,7 +147,7 @@ const NoteState = (props) => {
     // setCart(response)
     // setLoader(false)
     // setShowAnimation(true)
-   
+
     const newArr = cart.filter((element) => { return element.id !== productId.id })
     setCart(newArr)
   }
@@ -246,7 +246,7 @@ const NoteState = (props) => {
     },
     selector: ".four > .keen-slider__slide",
 
-  },[ResizePlugin,MutationPlugin])
+  }, [ResizePlugin, MutationPlugin])
 
 
 
@@ -256,28 +256,16 @@ const NoteState = (props) => {
 
   // Default options are marked with *
   const sendWhatsappMessage = async (name, email, phone, products, address, city, total, smallTotal) => {
-    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendmessage/"
     setCheckoutLoader(true)
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-
-      body: JSON.stringify({ name: name, email: email, phone: phone, products: products, address: address, total: total, city: city }) // body data type must match "Content-Type" header
-    });
-    sendEmail(name, email, products, total, smallTotal)
+    await sendEmail(name, "tradersfurqan517@gmail.com", products, total, smallTotal,phone,address)
+    await sendEmail(name, email, products, total, smallTotal,phone,address)
     setCart([])
     setCheckoutLoader(false)
     history('/thankyou')
-
-    return response.json(); // parses JSON response into native JavaScript objects
   }
 
   // https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/
-  const sendEmail = async (name, email, products, total, smallTotal) => {
+  const sendEmail = async (name, email, products, total, smallTotal,phone,address) => {
     const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/sendemail/"
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -288,9 +276,11 @@ const NoteState = (props) => {
       },
 
 
-      body: JSON.stringify({ name: name, email: email, products: products.toString(), total: smallTotal.toString(), subtotal: total.toString() }) // body data type must match "Content-Type" header
+      body: JSON.stringify({ name: name, email: email, products: products.toString(), total: smallTotal.toString(), subtotal: total.toString() ,deliveryCharges:city=="Karachi"?basicInfo.karachiDelivery:basicInfo.otherDelivery,city:city,phone:phone,address:address}) // body data type must match "Content-Type" header
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    const theSentEmail = await response.json(); // parses JSON response into native JavaScript objects
+    console.log(theSentEmail);
+    
   }
 
 
@@ -431,7 +421,7 @@ const NoteState = (props) => {
 
 
 
-   const getCategoryData = async (category) => {
+  const getCategoryData = async (category) => {
 
     setImgIsLoaded(false)
     setCategoryImage(null)
@@ -460,7 +450,7 @@ const NoteState = (props) => {
   }
 
 
-  
+
 
   // const getCategoryList = async () => {
   //   const catyData = await commerce.categories.list()
@@ -578,14 +568,14 @@ const NoteState = (props) => {
     return canvas;
   }
 
-  const generateDownload = async (imageSrc, crop,imageurl) => {
+  const generateDownload = async (imageSrc, crop, imageurl) => {
     if (!crop || !imageSrc) {
       return;
     }
 
     const canvas = await getCroppedImg(imageSrc, crop);
 
-    imgCloudinary(canvas.toDataURL('img'),imageurl)
+    imgCloudinary(canvas.toDataURL('img'), imageurl)
 
 
     // console.log(canvas)
@@ -631,7 +621,7 @@ const NoteState = (props) => {
 
 
 
-  const createProduct = async (name, price, description, category,homePreview,youtubeLink,priceAED,variants) => {
+  const createProduct = async (name, price, description, category, homePreview, youtubeLink, priceAED, variants) => {
     setEditorLoader(true)
     const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/createproduct"
     // Default options are marked with *
@@ -644,17 +634,17 @@ const NoteState = (props) => {
       },
 
       body: JSON.stringify({
-          name: name,
-          price: price,
-          description: description,
-        theTitle:'thezoomedpicture',
-        assets:imgPreview.map((e)=>{return {url:e.url}}),
-        createdAt:1681950730,
-        category:category,
-        homePreview:homePreview,
-        youtubeLink:youtubeLink==''?null:youtubeLink,
-        priceAED:priceAED,
-        variants:variants
+        name: name,
+        price: price,
+        description: description,
+        theTitle: 'thezoomedpicture',
+        assets: imgPreview.map((e) => { return { url: e.url } }),
+        createdAt: 1681950730,
+        category: category,
+        homePreview: homePreview,
+        youtubeLink: youtubeLink == '' ? null : youtubeLink,
+        priceAED: priceAED,
+        variants: variants
       }
       ), // body data type must match "Content-Type" header
     });
@@ -667,12 +657,12 @@ const NoteState = (props) => {
 
 
 
-    
+
     // parses JSON response into native JavaScript objects
   }
 
 
-  const editProduct = async (prodid,name, price, description, category,homePreview,youtubeLink,priceAED,variants) => {
+  const editProduct = async (prodid, name, price, description, category, homePreview, youtubeLink, priceAED, variants) => {
     setEditorLoader(true)
     const url = `https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/products/editProduct/${prodid}`
     // Default options are marked with *
@@ -685,17 +675,17 @@ const NoteState = (props) => {
       },
 
       body: JSON.stringify({
-          name: name,
-          price: price,
-          description: description,
-        theTitle:'thezoomedpicture',
-        assets:imgPreview.map((e)=>{return {url:e.url}}),
-        createdAt:1681950730,
-        category:category,
-        homePreview:homePreview,
-        youtubeLink:youtubeLink==''?null:youtubeLink,
-        priceAED:priceAED,
-        variants:variants
+        name: name,
+        price: price,
+        description: description,
+        theTitle: 'thezoomedpicture',
+        assets: imgPreview.map((e) => { return { url: e.url } }),
+        createdAt: 1681950730,
+        category: category,
+        homePreview: homePreview,
+        youtubeLink: youtubeLink == '' ? null : youtubeLink,
+        priceAED: priceAED,
+        variants: variants
       }
       ), // body data type must match "Content-Type" header
     });
@@ -717,8 +707,8 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "Accept": "*"
       }
-      
-     // body data type must match "Content-Type" header
+
+      // body data type must match "Content-Type" header
     });
 
     const product = await response.json();
@@ -731,14 +721,14 @@ const NoteState = (props) => {
   }
   // console.log(myAsset)
 
-  
+
 
 
 
 
 
   const [imgPreview, setImgPreview] = useLocalStorage('imgPrDeviewFF', [])
-  const imgCloudinary = async (file,imageurl) => {
+  const imgCloudinary = async (file, imageurl) => {
     setEditorLoader(true)
     const url = "https://api.cloudinary.com/v1_1/dextrzp2q/image/upload"
 
@@ -757,18 +747,18 @@ const NoteState = (props) => {
       body: formData // body data type must match "Content-Type" header
     });
     const myurl = await response.json()
-    if(imageurl){
-      const imgIndex = imgPreview.findIndex((e)=>{return e._id==imageurl._id})
+    if (imageurl) {
+      const imgIndex = imgPreview.findIndex((e) => { return e._id == imageurl._id })
       imgPreview[imgIndex].url = myurl.secure_url
-    setEditorLoader(false)
+      setEditorLoader(false)
 
     }
-    else{
-    setImgPreview([...imgPreview,{url:myurl.secure_url,_id:Date.now()}])
-    console.log(imgPreview)
-    setEditorLoader(false)
-  }
-    
+    else {
+      setImgPreview([...imgPreview, { url: myurl.secure_url, _id: Date.now() }])
+      console.log(imgPreview)
+      setEditorLoader(false)
+    }
+
 
   }
 
@@ -851,6 +841,63 @@ const NoteState = (props) => {
     setCategories(product)
     // parses JSON response into native JavaScript objects
   }
+
+  // /api/basicInfo/getInfo
+  // /api/basicInfo/editInfo
+  const [basicInfo, setBasicInfo] = useState(null)
+
+  useEffect(() => {
+    getBasicInfo()
+  }, [])
+
+  const getBasicInfo = async () => {
+    setMainLoader(true)
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/basicInfo/getInfo"
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "GET",
+
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "*",
+
+
+      },
+    });
+    const basicInfo = await response.json();
+    setBasicInfo(basicInfo)
+    setMainLoader(false)
+
+
+  }
+  const editBasicInfo = async () => {
+    setEditorLoader(true)
+
+    const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/basicInfo/editInfo"
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "PUT",
+
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "*",
+        "auth-token": localStorage.getItem('auth-token')
+
+
+      },
+
+      body: JSON.stringify(basicInfo), // body data type must match "Content-Type" header
+    });
+    const data = await response.json();
+    console.log(data);
+
+    setBasicInfo(data)
+    setEditorLoader(false)
+
+
+    // parses JSON response into native JavaScript objects
+  }
+
   const [categories, setCategories] = useState([])
 
 
@@ -893,34 +940,36 @@ const NoteState = (props) => {
 
   const [checkouter, setcheckouter] = useState(false)
 
-  const [country, setCountry] = useLocalStorage('hello',"Pakistan")
+  const [country, setCountry] = useLocalStorage('hello', "Pakistan")
   const openRef = useRef(null)
 
-  
+
   const getCategories = async () => {
     setMainLoader(true)
     const url = "https://spicesex-dot-arched-gear-433017-u9.de.r.appspot.com/api/getdata/getcategories"
     const response = await fetch(url, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
 
 
-        // body data type must match "Content-Type" header
+      // body data type must match "Content-Type" header
     }
     );
 
     const data = await response.json()
     setCategories(data)
     setMainLoader(false)
-}
+  }
+
+  const [city, setCity] = useLocalStorage('city', null)
 
   console.clear()
   return (
-    <NoteContext.Provider value={{setEditorLoader,history,getCategories,productsFetched,setCart,openRef,country,setCountry,setProducts,setHomeData,setCategoryData, deleteProduct,editProduct,setProductView, showAnimation, checkouter, setcheckouter, totalCal, settotalCal, getProductLoader, navLoader, setnavLoader, theProductLoader, anotherImageLoader, setAnotherImageLoader, categoriesRef, deleteCategory, createCategory, categories, setCategories, imgLoad, setImgLoad, refreshPage, mainProductId, setSliderSize, sliderSize, testimonialSliderRef, setImgPreview, modalRef, setModalIsOpen, modalIsOpen, imgPreview, loaded, setLoaded, imgIsLoaded, setImgIsLoaded, categoryImage,  createProduct, generateDownload, setMySpace, pageRef, anotherLoader, setAnotherLoader, getHomeProducts, homeProducts, currentPage, firstItemIndex, lastItemIndex, setCurrentPage, catyImageEditor, setCatyImageEditor, setCategorial, categorial, setCatyEditor, catyEditor, categoryEditor, getCategoryData, categoryData, setLoginLoader, editorLoader, footerImage, carousalEditor, setCarousalEditor, setFooterImage, setImageEditor, imageEditor, setComponent, Component, setText, text, editComponent, myRef, setAdminView, adminView, editor, homeData, getHomeData, loginLoader, loginAdmin, cloudinary, checkoutLoader, sendWhatsappMessage, sliderRefTwo, mainLoader, setMainLoader, productLoader, loader, productView, getProduct, removeProduct, updateProduct, ref, openCart, cart, addProduct, fetchProduct, products, fetchCart }}>
+    <NoteContext.Provider value={{ setBasicInfo, basicInfo, editBasicInfo, city, setCity, setEditorLoader, history, getCategories, productsFetched, setCart, openRef, country, setCountry, setProducts, setHomeData, setCategoryData, deleteProduct, editProduct, setProductView, showAnimation, checkouter, setcheckouter, totalCal, settotalCal, getProductLoader, navLoader, setnavLoader, theProductLoader, anotherImageLoader, setAnotherImageLoader, categoriesRef, deleteCategory, createCategory, categories, setCategories, imgLoad, setImgLoad, refreshPage, mainProductId, setSliderSize, sliderSize, testimonialSliderRef, setImgPreview, modalRef, setModalIsOpen, modalIsOpen, imgPreview, loaded, setLoaded, imgIsLoaded, setImgIsLoaded, categoryImage, createProduct, generateDownload, setMySpace, pageRef, anotherLoader, setAnotherLoader, getHomeProducts, homeProducts, currentPage, firstItemIndex, lastItemIndex, setCurrentPage, catyImageEditor, setCatyImageEditor, setCategorial, categorial, setCatyEditor, catyEditor, categoryEditor, getCategoryData, categoryData, setLoginLoader, editorLoader, footerImage, carousalEditor, setCarousalEditor, setFooterImage, setImageEditor, imageEditor, setComponent, Component, setText, text, editComponent, myRef, setAdminView, adminView, editor, homeData, getHomeData, loginLoader, loginAdmin, cloudinary, checkoutLoader, sendWhatsappMessage, sliderRefTwo, mainLoader, setMainLoader, productLoader, loader, productView, getProduct, removeProduct, updateProduct, ref, openCart, cart, addProduct, fetchProduct, products, fetchCart }}>
       {props.children}
     </NoteContext.Provider>
   )
