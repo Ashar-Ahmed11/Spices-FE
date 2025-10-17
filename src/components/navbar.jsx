@@ -101,7 +101,7 @@ export default function Navbar() {
                     </div>
                     <div>
 
-                        <ul className="mynavbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="mynavbar-nav me-auto  mb-lg-0">
 
 
 
