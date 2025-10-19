@@ -38,7 +38,7 @@ import CityChecker from './components/cityChecker';
 import BasicInfo from './components/admin/basicInfo';
 export default function App() {
     const context = useContext(NoteContext)
-    const { setCart, products, setProducts, country, productsFetched } = context
+    const { setCart, products, setProducts, country, productsFetched,basicInfo } = context
 
 
     useEffect(() => {
@@ -143,7 +143,7 @@ export default function App() {
 
                 <div hidden={location.pathname == '/checkout' && 'true' || location.pathname == '/thankyou' && 'true' || location.pathname == '/admin' && 'true'}>
                     <div className='whatsapp'>
-                        <a target="_blank" aria-label="Chat on WhatsApp" href="https://wa.me/923083116347?text=How%20can%20I%20place%20an%20order%3F"> <i style={{ color: '#0dc143' }} className="fa fa-whatsapp" aria-hidden="true"></i> </a>
+                     {basicInfo &&<a target="_blank" aria-label="Chat on WhatsApp" href={`https://wa.me/${basicInfo?.whatsAppNumber}?text=How%20can%20I%20place%20an%20order%3F`}> <i style={{ color: '#0dc143' }} className="fa fa-whatsapp" aria-hidden="true"></i> </a>}   
                     </div>
                 </div>
                 <div>
