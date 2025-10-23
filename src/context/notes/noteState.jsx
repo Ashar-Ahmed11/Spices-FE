@@ -967,7 +967,7 @@ const NoteState = (props) => {
 
   const [city, setCity] = useLocalStorage('city', null)
 
-  console.clear()
+  // console.clear()
   return (
     <NoteContext.Provider value={{ setBasicInfo, basicInfo, editBasicInfo, city, setCity, setEditorLoader, history, getCategories, productsFetched, setCart, openRef, country, setCountry, setProducts, setHomeData, setCategoryData, deleteProduct, editProduct, setProductView, showAnimation, checkouter, setcheckouter, totalCal, settotalCal, getProductLoader, navLoader, setnavLoader, theProductLoader, anotherImageLoader, setAnotherImageLoader, categoriesRef, deleteCategory, createCategory, categories, setCategories, imgLoad, setImgLoad, refreshPage, mainProductId, setSliderSize, sliderSize, testimonialSliderRef, setImgPreview, modalRef, setModalIsOpen, modalIsOpen, imgPreview, loaded, setLoaded, imgIsLoaded, setImgIsLoaded, categoryImage, createProduct, generateDownload, setMySpace, pageRef, anotherLoader, setAnotherLoader, getHomeProducts, homeProducts, currentPage, firstItemIndex, lastItemIndex, setCurrentPage, catyImageEditor, setCatyImageEditor, setCategorial, categorial, setCatyEditor, catyEditor, categoryEditor, getCategoryData, categoryData, setLoginLoader, editorLoader, footerImage, carousalEditor, setCarousalEditor, setFooterImage, setImageEditor, imageEditor, setComponent, Component, setText, text, editComponent, myRef, setAdminView, adminView, editor, homeData, getHomeData, loginLoader, loginAdmin, cloudinary, checkoutLoader, sendWhatsappMessage, sliderRefTwo, mainLoader, setMainLoader, productLoader, loader, productView, getProduct, removeProduct, updateProduct, ref, openCart, cart, addProduct, fetchProduct, products, fetchCart }}>
       {props.children}
