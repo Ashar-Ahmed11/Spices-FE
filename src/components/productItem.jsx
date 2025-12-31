@@ -200,16 +200,10 @@ export default function ProductItem({ data }) {
                                 currency: 'USD',
                             })}</p>
                         </div> : <p style={{ color: color, fontSize: '15.84px' }} className="card-text">{
-                        
-                        //     country=="Saudi-Arabia"?
-                        //     data.priceAED.toLocaleString('en-US', {
-                        //     style: 'currency',
-                        //     currency: 'AED',
-                        // })
-                        // :
-                        data.localePrice
-                    
-                    }</p>}
+                            data?.variants && data.variants.length > 0
+                                ? data.variants[0].price.toLocaleString('en-US', { style: 'currency', currency: 'PKR', minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                                : data.localePrice
+                        }</p>}
                     </div>
                 </Link>
             </div>

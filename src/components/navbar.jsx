@@ -155,14 +155,14 @@ export default function Navbar() {
                             <ul className="mynavbar-nav me-auto mb-2 mb-lg-0 py-3 px-2">
                                 <li className="nav-item mx-2 ">
 
-                                    <a target="_blank" href="https://www.instagram.com/nukhba.shop/" style={{ cursor: 'pointer' }} className="nav-link">
+                                    <a target="_blank" href="https://www.instagram.com/memon.foods.and.spices/" style={{ cursor: 'pointer' }} className="nav-link">
                                         <i style={{ fontSize: "25px", color: '#ffffff' }} className="fa fa-instagram" aria-hidden={true}></i>
 
                                     </a>
 
                                 </li>
                                 <li className="nav-item mx-2">
-                                    <a target="_blank" href="https://www.facebook.com/nukhbapk" style={{ cursor: 'pointer' }} className="nav-link">
+                                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61585868911875" style={{ cursor: 'pointer' }} className="nav-link">
                                         <i style={{ fontSize: "25px", color: '#ffffff' }} className="fa fa-facebook-official" aria-hidden={true}></i>
 
                                     </a>
@@ -189,14 +189,14 @@ export default function Navbar() {
 
 
                                 <li className="nav-item">
-                                    <a target="_blank" href="https://www.instagram.com/nukhba.shop/" style={{ cursor: 'pointer' }} className="nav-link">
+                                    <a target="_blank" href="https://www.instagram.com/memon.foods.and.spices/" style={{ cursor: 'pointer' }} className="nav-link">
                                         <i style={{ fontSize: "25px", color: color }} className="fa fa-instagram" aria-hidden={true}></i>
 
                                     </a>
 
                                 </li>
                                 <li className="nav-item">
-                                    <a target="_blank" href="https://www.facebook.com/nukhbapk" style={{ cursor: 'pointer' }} className="nav-link">
+                                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61585868911875" style={{ cursor: 'pointer' }} className="nav-link">
                                         <i style={{ fontSize: "25px", color: color }} className="fa fa-facebook-official" aria-hidden={true}></i>
 
                                     </a>
